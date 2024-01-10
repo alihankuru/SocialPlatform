@@ -40,7 +40,16 @@ namespace SocialPlatform.WebApi.Controllers
             }
         }
 
-        [HttpPost]
+
+//        {
+//    "username":"akk",
+//    "email":"ak@gmail.com",
+//    "password":"Ak@123",
+//    "name":"Al Kuru"
+//       }
+
+
+    [HttpPost]
         [Route("registeration")]
         public async Task<IActionResult> Register(RegistrationModel model)
         {

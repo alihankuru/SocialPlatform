@@ -14,7 +14,31 @@ namespace SocialPlatform.DataAccessLayer.Concrete
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            // The base constructor handles initializing the DbContext with the provided options.
+            
+        }
+
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        
+
+        // Override the OnModelCreating method to configure relationships
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ApplicationUser>()
+            .HasMany(user => user.Posts)
+            .WithOne(post => post.User)
+            .HasForeignKey(post => post.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasMany(user => user.Comments)
+                .WithOne(comment => comment.User)
+                .HasForeignKey(comment => comment.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            
         }
 
     }
