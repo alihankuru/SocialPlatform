@@ -26,18 +26,6 @@ namespace SocialPlatform.DataAccessLayer.Concrete
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ApplicationUser>()
-            .HasMany(user => user.Posts)
-            .WithOne(post => post.User)
-            .HasForeignKey(post => post.UserId)
-            .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<ApplicationUser>()
-                .HasMany(user => user.Comments)
-                .WithOne(comment => comment.User)
-                .HasForeignKey(comment => comment.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
-
             
         }
 

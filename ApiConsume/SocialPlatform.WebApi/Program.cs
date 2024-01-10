@@ -2,7 +2,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using SocialPlatform.BusinessLayer.Abstract;
+using SocialPlatform.BusinessLayer.Concrete;
+using SocialPlatform.DataAccessLayer.Abstract;
 using SocialPlatform.DataAccessLayer.Concrete;
+using SocialPlatform.DataAccessLayer.EntityFramework;
 using SocialPlatform.EntityLayer.Concrete;
 using SocialPlatform.EntityLayer.Services;
 using System.Text;
@@ -43,6 +47,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<ICommentDal, EfCommentDal>();
+builder.Services.AddScoped<ICommentService, CommentManager>();
+
+builder.Services.AddScoped<IPostDal, EfPostDal>();
+builder.Services.AddScoped<IPostService, PostManager>();
 
 var app = builder.Build();
 

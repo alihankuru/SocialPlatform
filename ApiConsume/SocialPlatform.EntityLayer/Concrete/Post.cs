@@ -14,7 +14,7 @@ namespace SocialPlatform.EntityLayer.Concrete
 
         // Foreign key to link the post to a user
         public string UserId { get; set; }
-        public ApplicationUser User { get; set; }
+        
 
         // Navigation property to represent post comments
         
