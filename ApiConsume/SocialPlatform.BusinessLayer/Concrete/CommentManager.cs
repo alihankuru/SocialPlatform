@@ -9,9 +9,11 @@ using System.Threading.Tasks;
 
 namespace SocialPlatform.BusinessLayer.Concrete
 {
+    // Implementation of the IGenericService<Comment> interface for managing Comment entities
     public class CommentManager : ICommentService
     {
         private readonly ICommentDal _commentDal;
+        // Constructor to inject the Comment Data Access Layer (Dal)
         public CommentManager(ICommentDal commentDal)
         {
             _commentDal = commentDal;

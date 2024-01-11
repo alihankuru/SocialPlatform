@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SocialPlatform.BusinessLayer.Concrete
-{
+{   // Implementation of the IPostService interface for managing Post entities
     public class PostManager:IPostService
     {
         private readonly IPostDal _postDal;
+        // Constructor to inject the Post Data Access Layer (Dal)
         public PostManager(IPostDal postDal)
         {
             _postDal = postDal;

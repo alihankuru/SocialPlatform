@@ -10,12 +10,15 @@ namespace SocialPlatform.WebApi.Controllers
     public class PostController : ControllerBase
     {
         private readonly IPostService _postService;
+        // Constructor to initialize the controller with an instance of IPostService
         public PostController(IPostService postService)
         {
             _postService = postService;
 
         }
 
+        // GET: api/post
+        // Retrieves a list of posts
         [HttpGet]
         public IActionResult PostList()
         {
@@ -23,6 +26,8 @@ namespace SocialPlatform.WebApi.Controllers
             return Ok(values);
         }
 
+        // POST: api/post
+        // Adds a new post
         [HttpPost]
         public IActionResult AddPost(Post post)
         {
@@ -30,6 +35,9 @@ namespace SocialPlatform.WebApi.Controllers
             return Ok();
         }
 
+
+        // DELETE: api/post/{id}
+        // Deletes a post by ID
         [HttpDelete]
         public IActionResult DeletePost(int id)
         {
@@ -38,6 +46,8 @@ namespace SocialPlatform.WebApi.Controllers
             return Ok();
         }
 
+        // PUT: api/post
+        // Updates an existing post
         [HttpPut]
         public IActionResult UpdatePost(Post post)
         {
@@ -45,6 +55,8 @@ namespace SocialPlatform.WebApi.Controllers
             return Ok();
         }
 
+        // GET: api/post/{id}
+        // Retrieves a specific post by ID
         [HttpGet("{id}")]
         public IActionResult GetPost(int id)
         {

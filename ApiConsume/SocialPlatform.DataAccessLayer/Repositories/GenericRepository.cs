@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace SocialPlatform.DataAccessLayer.Repositories
 {
+    // Generic repository implementation for performing CRUD operations on entities of type T
     public class GenericRepository<T> : IGenericDal<T> where T : class
     {
+        // Constructor to inject the ApplicationDbContext
         private readonly ApplicationDbContext _context;
 
         public GenericRepository(ApplicationDbContext context)
